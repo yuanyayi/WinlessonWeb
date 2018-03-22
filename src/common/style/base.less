@@ -1,0 +1,435 @@
+@import url("var.less");
+@icon: "../images/";
+
+/*************** 统一的页面格式 ***************/
+
+// 页面效果
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  position: relative;
+  font-size: 14px !important;
+}
+html, body {
+  min-width: 1024px;
+  color: @default;
+  .font-r;
+}
+// 图标
+i {
+  display: inline-block;
+  vertical-align: middle;
+  font-style: normal;
+}
+i[class^="icon-"] {
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  &[class*="video"] {
+    background: url("@{icon}video.png") no-repeat center top/15px;
+  }
+  &[class*="people"] {
+    background: url("@{icon}people.png") no-repeat center top/15px;
+  }
+  &[class*="calender"] {
+    background: url("@{icon}calender.png") no-repeat center top/15px;
+  }
+  &[class*="position"] {
+    background: url("@{icon}position.png") no-repeat center top/15px;
+  }
+  &[class*="time"] {
+    background: url("@{icon}time.png") no-repeat center top/15px;
+  }
+  &[class*="service"] {
+    background: url("@{icon}service.png") no-repeat center top/15px;
+  }
+  &[class*="open"] {
+    background: url("@{icon}open.png") no-repeat center top/15px;
+  }
+  &[class*="open-dark"] {
+    background: url("@{icon}open-dark.png") no-repeat center top/15px;
+  }
+  &[class*="playing"] {
+    background: url("@{icon}playing.png") no-repeat center top/15px;
+  }
+  &[class*="download"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    background: url("@{icon}download.png") no-repeat center top/22px;
+  }
+  &[class*="close"] {
+    width: 22px;
+    height: 22px;
+    margin: 0;
+    background: url("@{icon}close.png") no-repeat center top/22px;
+  }
+}
+// 文字中的分隔线
+i.divi {
+  color: @sep_dark;
+}
+.has-divi:after {
+  content: "|";
+  padding-left: 3px;
+  padding-right: 3px;
+  color: @sep_dark;
+}
+// a标签
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+a:link, a:visited, a:hover, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+nav>a {
+  margin-right: 25px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+a>div, a>ul {
+  display: none;
+}
+a:hover>div, a:hover>ul {
+  display: block;
+}
+// 元素样式
+img {
+  width: 100%;
+}
+ul, ol, dl, li, dt, dd {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+// 画框
+.frame {
+  background: #efefef;
+  overflow: hidden;
+  position: relative;
+  &.circle {
+    border-radius: 50%;
+  }
+  img:not(.icon) {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+// 简单flex布局
+.flex {
+  display: flex;
+  &>* {
+    flex: 1;
+  }
+}
+// 清除浮动
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.cf:after {
+  .cf_after;
+}
+// 强制元素单行内显示
+.oneline {
+  letter-spacing: -.5em;
+  &>* {
+    letter-spacing: 0;
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    max-height: 100%;
+  }
+}
+// 强制文字单行显示，多出部分省略号
+.oneline-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+// 标题样式
+// h2:页面标题
+h2 {
+  .font-b;
+  font-size: 34px;
+  color: @default;
+  height: 48px;
+  line-height: 48px;
+  margin-bottom: 40px;
+}
+// h3:主页面内容标题
+h3 {
+  .font-b;
+  font-size: 24px;
+  color: @default;
+  height: 33px;
+  line-height: 33px;
+  margin-bottom: 20px;
+}
+// h4:栏目标题
+h4 {
+  height: 22px;
+  line-height: 22px;
+  font-size: 16px;
+  .font-b;
+}
+// h5:课程标题
+h5 {
+  margin: 0;
+  .font-m;
+  color: @default;
+  font-size: 14px;
+  line-height: 20px;
+  max-height: 40px;
+}
+// 标题装饰
+h1, h2, h3, h4, h5, h6 {
+  box-sizing: content-box;
+  margin: 0;
+  position: relative; // 栏目分隔线
+  &.hr {
+    padding-top: 14px;
+    padding-bottom: 14px;
+    &:after {
+      .hr-after-inner;
+      bottom: 0;
+    }
+    & * {
+      vertical-align: middle;
+    }
+    .right {
+      float: right;
+      .font-r;
+      color: @font_light;
+      font-size: 12px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  } // 带图标的栏目标题
+  &.icon {
+  //   padding-left: 37px;
+    .icon-img {
+      display: none;
+  //     display: inline-block;
+  //     position: absolute;
+  //     left: 0;
+  //     width: 22px;
+  //     height: 22px;
+  //     .one_bg_img;
+    }
+  }
+}
+// 重要课程标题样式：
+.big_title {
+  .font-b;
+  font-size: 24px;
+  color: @default;
+}
+// 一堆乱七八槽没有分类的东西
+label {
+  display: block;
+}
+input {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid @sep;
+  box-shadow: none;
+  background-color: #fff;
+}
+p {
+  line-height: 17px;
+  margin: 0;
+}
+b {
+  color: @theme_red;
+}
+// 按钮
+button {
+  display: inline-block;
+  cursor: pointer;
+  background: @theme;
+  color: #fff;
+  border-radius: 2px;
+  text-align: center;
+  .font-m;
+  border: none;
+  &:focus, &:hover, &:active {
+    background: @theme_red;
+  }
+  &.yellow {
+    background: @theme;
+    color: #fff;
+    &:focus, &:hover, &:active {
+      background: @theme_red;
+    }
+  }
+  &.white {
+    background: #fff;
+    color: @default;
+    border: 1px solid @sep;
+    &:focus, &:hover, &:active {
+      background: @sep;
+    }
+  }
+}
+// 蒙层
+.mask {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .4);
+  z-index: 99;
+  &>* {
+    background: #fff;
+    position: absolute;
+  }
+}
+
+/*************** 统一的页面格式:类名 ***************/
+
+// 带背景的分区
+section {
+  .bgcolorful {
+    background-color: @bg_yellow;
+    padding: 20px;
+    .class_card_list li {
+      background: #fff !important;
+    }
+  }
+}
+// 安全区
+.container-fluid {
+  width: 1024px;
+  margin: auto;
+}
+// 主页面区
+.main {
+  padding: 40px 42px;
+  position: relative;
+  &:after {
+    .cf_after;
+  }
+}
+.main_left>*, .main_right>* {
+  margin-bottom: 20px;
+}
+.main_left {
+  width: 600px;
+  margin-right: 40px;
+  float: left;
+}
+.main_right {
+  width: 300px;
+  float: left;
+}
+// 用户登录表单：
+.login_form, .register_form {
+  @this_h: 36px;
+  position: relative;
+  input {
+    width: 300px;
+    height: @this_h;
+    line-height: 20px;
+    border-radius: 2px;
+    border: 1px solid @theme;
+    padding: (@this_h - 20px)/2 10px;
+    margin-bottom: 5px;
+  }
+  .pw {
+    position: relative;
+  }
+  button {
+    width: 145px;
+    height: 36px;
+    margin-right: 10px;
+  }
+}
+// 标题下轮播图的控制器定位
+.carousel .right {
+  position: absolute;
+  right: 0;
+  top: -50px;
+  height: 50px;
+  line-height: 50px;
+  .font-r;
+  color: @font_light;
+  font-size: 12px;
+  &>* {
+    vertical-align: middle;
+  }
+  .carousel-indicators {
+    position: static !important;
+    margin-left: 0 !important;
+  }
+  .controler {
+    i {
+      margin-right: 8px;
+      border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      background-color: #000;
+      opacity: .1;
+    }
+    i.active {
+      opacity: .4;
+    }
+  }
+  i.prev, i.next {
+    opacity: 1;
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+    .one_bg_img;
+    cursor: pointer;
+  }
+  i.prev {
+    background-image: url("@{icon}prev.png");
+  }
+  i.next {
+    background-image: url("@{icon}next.png");
+  }
+}
+.table-bordered, .table-bordered * {
+  border-color: @sep !important;
+}
+// 悬浮的二维码
+.float-v-code {
+  display: none;
+  position: absolute;
+  width: 290px;
+  padding: 40px 52px;
+  text-align: center;
+  background: #fff;
+  .font-m;
+  color: @default;
+  z-index: 999;
+  header {
+    margin-bottom: 40px;
+  }
+  img {
+    width: 185px;
+    height: 185px;
+    margin-bottom: 17px;
+  }
+  p {
+    color: @font;
+  }
+}

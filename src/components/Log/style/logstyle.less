@@ -1,0 +1,87 @@
+  @alert: red;
+  .login, .register, .forgetpage {
+    padding: 50px 42px;
+    h2 {
+      margin-bottom: 40px;
+      img {
+        width: 330px;
+        height: 46px;
+      }
+    }
+    label {
+      &>* {
+        vertical-align: middle;
+        word-spacing: 0;
+      }
+      word-spacing: -2px;
+      position: relative;
+      width: 360px;
+      height: 36px;
+      line-height: 36px;
+      margin-bottom: 20px;
+      font-family: PingFangSC-Regular;
+      font-weight: normal;
+      span:first-child {
+        font-family: PingFangSC-Medium;
+        font-weight: bold;
+        display: inline-block;
+        margin-right: 10px;
+        text-align: right;
+      }
+      input {
+        border: 1px solid #e5e5e5;
+        border-radius: 2px;
+        padding-left: 5px;
+        &[type="text"], &[type="password"] {
+          width: 300px;
+          height: 100%;
+          float: right;
+        }
+        &[type="checkbox"] {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+          &:checked {
+            appearance: checkbox;
+          }
+          margin-top: 0;
+        }
+      }
+    }
+    .errormsg {
+      display: none;
+      position: absolute;
+      font-family: PingFangSC-Regular;
+      font-size: 12px;
+      color: #333;
+      top: 0;
+      left: 370px;
+      width: 80%;
+      a {
+        color: #e37d28;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      &.alert {
+        color: @alert;
+      }
+    }
+    .error {
+      .errormsg {
+        display: block;
+      }
+      input {
+        border-color: @alert;
+      }
+    }
+    button {
+      width: 160px;
+      height: 36px;
+      float: right;
+      margin-right: 140px;
+    }
+    .orange {
+      color: #e37d28;
+    }
+  }

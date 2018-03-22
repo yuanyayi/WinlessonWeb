@@ -1,0 +1,75 @@
+/* 变量设置 */
+
+@icon: "../../images/";
+@images: "./images/";
+
+/* 标准统一规范 */
+
+// 字体
+@default: #333;
+@font: #666;
+@font_light: #999;
+@font_unabled: #ccc;
+//辅助文本
+// 辅助文本用浅灰，默认分割线用浅分割线，有些不可点击行为的文字会用深分割线
+// 字体
+.font-r {
+  font-family: PingFangSC-Regular, Microsoft YaHei, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+.font-m {
+  font-family: PingFangSC-Medium, Microsoft YaHei, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+.font-b {
+  font-family: PingFangSC-Semibold, Microsoft YaHei, Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+//背景
+@bg_light: #f9f9f9;
+@bg_dark: #f2f2f2;
+@bg_yellow: #fffcf0;
+//分隔符
+@sep: #e5e5e5;
+@sep_dark: #ccc;
+//重点字体：
+@theme: #ffbc42;
+@theme_yellow: #ffef93;
+@theme_orange: #ff9e4d;
+@theme_red: #e37d28;
+@price: #fe6b30;
+// 其他设置
+@unabled: #e5e5e5;
+// 各个页面都可能会用到的编程样式：
+.one_bg_img {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+// 清除浮动
+.cf_after {
+  content: "";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+// 划线
+.hr-after-inner {
+  @icon: "../images/";
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-image: url("@{icon}hr_dots.png");
+  background-repeat: repeat-x;
+  background-size: 10px 2px;
+}
+// 单行文本
+.one_line_text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

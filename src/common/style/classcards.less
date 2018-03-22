@@ -1,0 +1,305 @@
+/* 标准统一规范 */
+
+@import url("./var.less");
+
+/******************************** 课程卡片列表 *******************************/
+
+// 课程列表定位方式：
+.class_card_list {
+  &>li {
+    float: left;
+  }
+  &.col-3 li, &.col-2 li {
+    float: left;
+    margin-right: 20px;
+  }
+  &.col-3 li:nth-child(3n) {
+    margin-right: 0;
+  }
+  &.col-3 li:nth-child(n+4) {
+    margin-top: 20px;
+  }
+  &.col-2 li:nth-child(2n) {
+    margin-right: 0;
+  }
+  &.col-2 li:nth-child(n+3) {
+    margin-top: 20px;
+  }
+  &:after {
+    .cf_after;
+  }
+}
+// 购买后样式：
+.class_card_has_bought_after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  right: 5px;
+  bottom: -9px;
+  .one_bg_img;
+  background-image: url("@{images}bought.png");
+}
+// 播放小三角：
+.class_card_frame_play_sign {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  .one_bg_img;
+  background-color: rgba(0, 0, 0, 0.2);
+  background-image: url("@{images}play.png");
+  background-size: 22px 22px;
+  cursor: pointer;
+}
+// 课程卡片
+.class_card_list li, .class_card {
+  position: relative;
+  float: left;
+  font-size: 12px;
+  overflow: hidden;
+  .frame {
+    position: relative;
+    overflow: hidden;
+  }
+  .title {
+    // 标题
+    .font-m;
+    color: @default;
+    font-size: 14px;
+    line-height: 20px;
+    max-height: 40px;
+    overflow: hidden;
+  }
+  .tag {
+    // 课程分类标签
+    padding: 0 5px;
+    margin-right: 5px;
+    background: @theme_red;
+    border-radius: 2px;
+    color: #fff;
+  }
+  .rank {
+    // 评分
+    margin-right: 5px;
+  }
+  .times, .people {
+    color: @font;
+    &>b {
+      color: @theme_red;
+      &.light {
+        color: @theme_orange;
+      }
+    }
+  } // 鼠标悬浮图片动画：
+  &.animate:hover {
+    .frame img:not(.icon) {
+      animation: zoomin 1s ease-out;
+      transform: translate(-50%, -50%) scale(1.2, 1.2);
+    }
+    @keyframes zoomin {
+      from {
+        transform: translate(-50%, -50%) scale(1, 1);
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2, 1.2);
+      }
+    }
+  }
+  .details {
+    .font-r;
+    color: @font;
+    font-size: 12px;
+  }
+  button {
+    width: 120px;
+    height: 26px;
+    margin: auto auto 9px;
+    display: block;
+    .font-b;
+  } // 购买按钮
+  &.bought {
+    button, .price, .counter {
+      visibility: hidden;
+    }
+  }
+  .remain {
+    vertical-align: middle;
+  }
+  .schedule {
+    display: inline-block;
+    width: 120px;
+    height: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    background-color: #e5e5e5;
+    line-height: 16px;
+    vertical-align: 2px;
+    overflow: hidden;
+  }
+  .schedule>i {
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    background-color: @theme;
+  }
+}
+
+/* 课程卡片样式：
+* 一般课程 normal
+* 强力推荐 bigscreen
+* 直播(圆形头像) circle
+* 线下班： offline
+*/
+
+.class_card_normal {
+  &.bought {
+    .frame_mask {
+      display: block !important;
+    }
+    .frame:after {
+      .class_card_has_bought_after;
+    }
+  }
+}
+// 近期直播
+.circle_list li, .class_card.circle {
+  padding: 9px;
+  &>* {
+    margin-bottom: 5px;
+  }
+  .frame {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin-right: 10px;
+    &:after {.class_card_frame_play_sign;}
+  }
+  h5, p {
+    margin-left: 60px;
+  }
+  button {
+    margin-left: 60px;
+  }
+  .details {
+    .one_line_text;
+  }
+  /* 已购买的项 */
+  &.bought:after {
+    .class_card_has_bought_after;
+    background-image: url("@{images}booked.png");
+  }
+} // 线下班
+.offline_list li, .class_card.offline {
+  width: 560px;
+  &>* {
+    margin-bottom: 5px;
+  }
+  .frame {
+    width: 150px;
+    height: 128px;
+    float: left;
+    margin-right: 10px;
+  }
+  .frame:after {
+    content: "";
+    display: none;
+  }
+  h5 {
+    .font-m;
+    font-size: 20px;
+    color: @default;
+    line-height: 28px;
+    margin-bottom: 10px;
+  }
+  p+p {
+    margin-top: 5px;
+  }
+} // 强力推荐
+.bigscreen_list li, .class_card.bigscreen {
+  padding: 20px 10px 10px;
+  width: 600px !important;
+  .frame {
+    // width: 150px;
+    // height: 200px;
+    width: 120px;
+    height: 160px;
+    float: left;
+    margin-right: 20px;
+    &:after {
+      display: none;
+    }
+  }
+  .title {
+    .font-b;
+    font-size: 20px;
+    color: @default;
+    margin-bottom: 10px;
+    max-height: 68px; // 限制为两行;
+    line-height: 34px;
+    overflow: hidden;
+  }
+  .details {
+    font-size: 14px;
+  }
+  .info {
+    margin-top: 11px;
+    text-align: left;
+  }
+  .money {
+    margin-top: 42px;
+    height: 26px;
+    line-height: 30px;
+    .font-b;
+    font-size: 20px;
+    color: @price;
+  }
+  .counter {
+    margin-top: 45px;
+    float: right;
+    font-family: PingFangSC-Regular;
+    font-size: 14px;
+    color: #333;
+    * {
+      text-decoration: none;
+      font-style: normal;
+    }
+    d, h, m, s, i {
+      height: 22px;
+      line-height: 22px;
+      padding-left: 5px;
+      padding-right: 5px;
+      font-family: PingFangSC-Semibold;
+      font-weight: 600;
+      font-size: 12px;
+    }
+    d, h, m, s {
+      border: 1px solid #e5e5e5;
+    }
+    d {
+      margin-left: 5px;
+    }
+    h {
+      margin-left: 10px;
+    }
+    i:nth-of-type(n+2) {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  }
+  /* 已购买的项 */
+  &.bought:after {
+    .class_card_has_bought_after;
+    bottom: 24px;
+    right: 10px;
+  }
+  &>* {
+    margin-bottom: 10px;
+  }
+}
