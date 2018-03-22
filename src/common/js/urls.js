@@ -1,6 +1,6 @@
 // ------------------------OPT------------------------------- //
-// var base_url = 'http://test.api.platform.winlesson.com' //测试
-var base_url = 'http://api.msg.platform.winlesson.com'
+var base_url = 'http://test.api.platform.winlesson.com' //测试
+// var base_url = 'http://api.msg.platform.winlesson.com'
 
 export default {
   base_url : base_url, // 兼容……
